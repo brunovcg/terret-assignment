@@ -1,4 +1,12 @@
 import type { WithHttp } from "../../types/globalTypes";
+import type { SORTABLE_COLUMNS } from "./starWars.constants";
+
+export interface StarWarsPageable<ResultType> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: ResultType[];
+}
 
 export interface StarWarsPlanet {
   climate: string;
@@ -35,3 +43,8 @@ export interface StarWarsPerson {
   url: WithHttp;
   vehicles: string[];
 }
+
+export type Sort = {
+  column: (typeof SORTABLE_COLUMNS)[number];
+  direction: "asc" | "dsc";
+};
