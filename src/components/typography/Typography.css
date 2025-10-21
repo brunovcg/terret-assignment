@@ -1,0 +1,38 @@
+.typography {
+  &.typography-bold {
+    font-weight: bold;
+  }
+
+  &.typography-italic {
+    font-style: italic;
+  }
+
+  &.typography-align-left {
+    text-align: left;
+  }
+
+  &.typography-align-right {
+    text-align: right;
+  }
+
+  &.typography-align-center {
+    text-align: center;
+  }
+
+  &.typography-align-justify {
+    text-align: justify;
+  }
+
+  &.typography-size-small {
+    font-size: var(--font-small-size);
+  }
+  &.typography-size-regular {
+    font-size: var(--font-regular-size);
+  }
+  &.typography-size-large {
+    font-size: var(--font-large-size);
+  }
+  &.typography-size-title {
+    font-size: var(--font-title-size);
+  }
+}

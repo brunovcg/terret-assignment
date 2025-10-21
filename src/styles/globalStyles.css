@@ -1,0 +1,15 @@
+:root {
+  /* colors */
+  --primary-color: #038fc6;
+  --primary-light-color: #8bdeff;
+  --error-color: #e12f26;
+  --warning-color: rgb(190, 156, 0);
+  --white--background: #fff;
+
+  /* font-size */
+
+  --font-small-size: 12px;
+  --font-regular-size: 14px;
+  --font-large-size: 16px;
+  --font-title-size: 24px;
+}

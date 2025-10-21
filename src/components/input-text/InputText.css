@@ -1,0 +1,9 @@
+.input-text-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .input-text {
+    padding: 4px;
+  }
+}
