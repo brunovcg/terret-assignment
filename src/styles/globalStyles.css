@@ -4,6 +4,7 @@
   --hover-color: #16393b;
   --error-color: #dc5858;
   --secondary-color: #ffffff;
+  --warning-color: #dbe427;
 
   /* Container colors */
   --border-color: #c6c6c6f6;
@@ -59,17 +60,22 @@ body {
   }
 }
 
-.color-variant {
-  :is(-primary) {
-    color: var(--primary-color);
-  }
-  :is(-primary-light) {
-    color: var(--hover-color);
-  }
-  :is(-secondary) {
-    color: var(--secondary-color);
-  }
-  :is(-error) {
-    color: var(--error-error);
-  }
+.color-variant-hover {
+  color: var(--hover-color);
+}
+
+.color-variant-primary {
+  color: var(--primary-color);
+}
+
+.color-variant-secondary {
+  color: var(--secondary-color);
+}
+
+.color-variant-error {
+  color: var(--error-color);
+}
+
+.color-variant-warning {
+  color: var(--warning-color);
 }

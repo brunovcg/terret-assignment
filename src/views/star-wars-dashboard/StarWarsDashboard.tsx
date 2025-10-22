@@ -55,6 +55,7 @@ export function StarWarsDashboard() {
             <Icon
               icon="star"
               weight={favorites.includes(row.name) ? "fill" : "regular"}
+              variant="warning"
             />
           </Button>
         ),
