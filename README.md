@@ -38,6 +38,14 @@ npm run lint
 - Local Persistence for favorites in local storage: ✅
 - Unit tests for most important parts: ✅
 
+## Walkthrough
+
+`/views/StarWarsDashboard` 
+This is the main view that renders the planets table, you can click on the favorite button on each row to persist it, in local storage.
+You have filter for climate and terrain (includes and case insensitive) + a checkbox to filter only the favorites. Also a sorting select to choose a column
+On Clicking in a row you open the `PlanetDetailDialog` dialog, controlled by `/dialogs/controller`. There we fetch the planet details, residences and the statistics.
+Once you open a Dialog, the Dialog controller add the params on the url that are enough to share this dialog link.
+
 ## AI Usage
 
 I used ChatGPT integrated with VSCode to handle easier the context of the opened tabs.
@@ -79,4 +87,7 @@ About APP functionality
 1- Sort asc and dsc  
 2- If we could control the backend delegate the pagination for it. Since sorting was not available in the API, I had to fetch everything and sort in the client side. Search was available, we could use the server pagination but as we had to get all for sort, I just paginated on the client.  
 3- Refine the UI and Layouts  
-4 - Add E2E tests with Playwright or TestCafe to cover user flows.
+4- Add E2E tests with Playwright or TestCafe to cover user flows.
+5- Make table columns not change size causing this resizing glitch
+6- In case this API required an authentication we could implement a session based auth, avoiding JWT Tokens for better security
+7- If we need more pages we could implement a router such as React Router Dom for a SPA app.
