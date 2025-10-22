@@ -83,14 +83,18 @@ export function Table<TableRowData>({
       {pageLimit && !!rows.length ? (
         <div className="table-pagination">
           <div className="table-pagination-info">
-            <Typography as="span" variant="secondary">
+            <Typography as="span" variant="secondary" bold>
               {strings.page}
             </Typography>
-            <Typography as="span">{currentPageIndex + 1}</Typography>
-            <Typography as="span" variant="secondary">
+            <Typography bold as="span">
+              {currentPageIndex + 1}
+            </Typography>
+            <Typography as="span" variant="secondary" bold>
               {strings.of}
             </Typography>
-            <Typography as="span">{pages.length}</Typography>
+            <Typography bold as="span">
+              {pages.length}
+            </Typography>
           </div>
           <div className="table-pagination-buttons">
             <Button
