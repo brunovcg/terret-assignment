@@ -1,5 +1,5 @@
 import { getLocale } from "../../../../locales/locales";
-import type { StarWarsPerson } from "../../../../services/star-wars/starWars.api.types";
+import type { StarWarsPerson } from "../../../../services/star-wars/api/starWars.api.types";
 import { PlanetDetailData } from "./PlanetDetailData";
 
 interface Props {

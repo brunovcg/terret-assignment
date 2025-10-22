@@ -1,10 +1,10 @@
 import { useMemo, type ChangeEvent } from "react";
 import { Table } from "../../components/table/Table";
-import { useStartWarsPlanets } from "../../services/star-wars/use-star-wars-planets/useStarWarsPlanets";
+import { useStartWarsPlanets } from "../../services/star-wars/hooks/use-star-wars-planets/useStarWarsPlanets";
 import type {
   Sort,
   StarWarsPlanet,
-} from "../../services/star-wars/starWars.api.types";
+} from "../../services/star-wars/api/starWars.api.types";
 import type { TableColumns } from "../../components/table/Table.types";
 import { getLocale } from "../../locales/locales";
 import "./StarWarsDashboard.css";

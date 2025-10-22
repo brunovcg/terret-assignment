@@ -7,7 +7,7 @@ import { PlanetDetailDialogResidents } from "./components/PlanetDetailDialogResi
 import { PlanetDetailDialogCharts } from "./components/PlanetDetailDialogCharts";
 import { PlanetDetailDialogAverages } from "./components/PlanetDetailDialogAverages";
 import { Typography } from "../../../components/typography/Typography";
-import { useStarWarsPlanetDetails } from "../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails";
+import { useStarWarsPlanetDetails } from "../../../services/star-wars/hooks/use-star-wars-planet-details/useStarWarsPlanetDetails";
 
 const string = getLocale().planetDetailDialog;
 

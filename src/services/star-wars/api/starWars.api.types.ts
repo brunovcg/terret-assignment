@@ -1,5 +1,5 @@
-import type { WithHttp } from "../../types/globalTypes";
-import type { SORTABLE_COLUMNS } from "./starWars.constants";
+import type { WithHttp } from "../../../types/globalTypes";
+import type { SORTABLE_COLUMNS } from "../starWars.constants";
 
 export interface StarWarsPageable<ResultType> {
   count: number;

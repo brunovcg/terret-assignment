@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
@@ -21,12 +20,12 @@ vi.mock("../starWars.api", () => {
   return { StarWarsService };
 });
 
-import { StarWarsService } from "../starWars.api";
+import { StarWarsService } from "../../api/starWars.api";
 import { useStarWarsPlanetDetails } from "./useStarWarsPlanetDetails";
 import type {
   StarWarsPerson,
   StarWarsPlanetWithResidents,
-} from "../starWars.api.types";
+} from "../../api/starWars.api.types";
 
 describe("useStarWarsPlanetDetails", () => {
   const PLANET_URL = "https://swapi.dev/api/planets/1/";

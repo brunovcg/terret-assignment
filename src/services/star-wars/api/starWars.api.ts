@@ -1,5 +1,5 @@
-import type { WithHttp } from "../../types/globalTypes";
-import { Client } from "../client";
+import type { WithHttp } from "../../../types/globalTypes";
+import { Client } from "../../client";
 import type {
   StarWarsPageable,
   StarWarsPlanet,

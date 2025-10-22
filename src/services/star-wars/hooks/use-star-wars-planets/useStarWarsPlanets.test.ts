@@ -10,10 +10,10 @@ vi.mock("./starWars.api", () => {
   return { StarWarsService };
 });
 
-import { StarWarsService } from "../starWars.api";
-import { LocalStorageUtils } from "../../../utils/local-storage/localStorage.utils";
+import { StarWarsService } from "../../api/starWars.api";
+import { LocalStorageUtils } from "../../../../utils/local-storage/localStorage.utils";
 import { useStartWarsPlanets } from "./useStarWarsPlanets";
-import type { StarWarsPlanet } from "../starWars.api.types";
+import type { StarWarsPlanet } from "../../api/starWars.api.types";
 
 const TATOOINE = "Tatooine";
 const NABOO = "Naboo";

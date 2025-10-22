@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { StarWarsService } from "../starWars.api";
-import type { Sort, StarWarsPlanet } from "../starWars.api.types";
-import { comparePlanets, includesInsensitive } from "../startWars.utils";
-import { INITIAL_FILTERS } from "../starWars.constants";
-import { LocalStorageUtils } from "../../../utils/local-storage/localStorage.utils";
+import { StarWarsService } from "../../api/starWars.api";
+import type { Sort, StarWarsPlanet } from "../../api/starWars.api.types";
+import { filterAndSortPlanets } from "../../utils/starWars.utils";
+import { INITIAL_FILTERS } from "../../starWars.constants";
+import { LocalStorageUtils } from "../../../../utils/local-storage/localStorage.utils";
 
 const starWarsService = new StarWarsService();
 
@@ -61,31 +61,17 @@ export function useStartWarsPlanets() {
       });
   }, []);
 
-  const planetsWithFilterAndSorting = useMemo(() => {
-    const filtered = planets.filter(
-      (planet) =>
-        includesInsensitive(planet.climate ?? "", filters.climate) &&
-        includesInsensitive(planet.terrain ?? "", filters.terrain),
-    );
-
-    // Optional favorites filter
-    const filteredByFav = onlyFavorites
-      ? filtered.filter((planet) =>
-          favoritesSet.has((planet.name ?? "").toLowerCase().trim()),
-        )
-      : filtered;
-
-    if (!sortBy) return filteredByFav;
-
-    return filteredByFav.slice().sort((a, b) => comparePlanets(a, b, sortBy));
-  }, [
-    planets,
-    onlyFavorites,
-    sortBy,
-    filters.climate,
-    filters.terrain,
-    favoritesSet,
-  ]);
+  const planetsWithFilterAndSorting = useMemo(
+    () =>
+      filterAndSortPlanets({
+        planets,
+        filters,
+        onlyFavorites,
+        favoritesSet,
+        sortBy,
+      }),
+    [planets, filters, onlyFavorites, favoritesSet, sortBy],
+  );
 
   return {
     planets: planetsWithFilterAndSorting,

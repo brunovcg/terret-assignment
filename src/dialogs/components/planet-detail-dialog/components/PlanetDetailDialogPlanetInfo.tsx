@@ -1,6 +1,6 @@
 import { Typography } from "../../../../components/typography/Typography";
 import { getLocale } from "../../../../locales/locales";
-import type { StarWarsPlanetWithResidents } from "../../../../services/star-wars/starWars.api.types";
+import type { StarWarsPlanetWithResidents } from "../../../../services/star-wars/api/starWars.api.types";
 import { NumberUtils } from "../../../../utils/number/number.utils";
 import { PlanetDetailData } from "./PlanetDetailData";
 

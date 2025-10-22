@@ -1,6 +1,6 @@
 import { Typography } from "../../../../components/typography/Typography";
 import { getLocale } from "../../../../locales/locales";
-import type { ReducedResidentData } from "../../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails.utils";
+import type { ReducedResidentData } from "../../../../services/star-wars/hooks/use-star-wars-planet-details/useStarWarsPlanetDetails.utils";
 
 const string = getLocale().planetDetailDialog;
 

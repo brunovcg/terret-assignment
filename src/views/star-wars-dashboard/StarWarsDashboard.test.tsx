@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, type Mock } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock(
-  "../../services/star-wars/use-star-wars-planets/useStarWarsPlanets",
+  "../../services/star-wars/hooks/use-star-wars-planets/useStarWarsPlanets",
   () => ({ useStartWarsPlanets: vi.fn() }),
 );
 
@@ -10,7 +10,7 @@ vi.mock("../../dialogs/controller", () => ({
   dialogController: { open: vi.fn() },
 }));
 
-import { useStartWarsPlanets } from "../../services/star-wars/use-star-wars-planets/useStarWarsPlanets";
+import { useStartWarsPlanets } from "../../services/star-wars/hooks/use-star-wars-planets/useStarWarsPlanets";
 import { dialogController } from "../../dialogs/controller";
 import { translation as enUS } from "../../locales/enUS";
 import { StarWarsDashboard } from "./StarWarsDashboard";

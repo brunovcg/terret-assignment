@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import type { StarWarsPlanetWithResidents } from "../starWars.api.types";
-import { StarWarsService } from "../starWars.api";
+import type { StarWarsPlanetWithResidents } from "../../api/starWars.api.types";
+import { StarWarsService } from "../../api/starWars.api";
+
 import {
   reduceResidentsData,
   type ReducedResidentData,
-} from "./useStarWarsPlanetDetails.utils";
+} from "../../utils/starWars.utils";
 
 const starWarsService = new StarWarsService();
 
