@@ -15,6 +15,7 @@ export function Table<TableRowData>({
   primaryKey,
   pageLimit,
   onRowClick,
+  hideNoData,
 }: Readonly<TableProps<TableRowData>>) {
   const pages = !pageLimit
     ? [rows]
@@ -63,7 +64,7 @@ export function Table<TableRowData>({
               ))}
             </tr>
           ))}
-          {!rows.length ? (
+          {!rows.length && !hideNoData ? (
             <tr>
               <td colSpan={columns.length} className="no-data-row">
                 <Typography bold align="center" variant="error">

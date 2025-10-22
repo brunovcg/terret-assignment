@@ -21,6 +21,7 @@ import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
 import { ScrollableContainer } from "../../components/scrollable-container/ScrollableContainer";
 import { Loading } from "../../components/loading/Loading";
+import { Checkbox } from "../../components/checkbox/Checkbox";
 
 const strings = getLocale().planetTable;
 
@@ -33,6 +34,8 @@ export function StarWarsDashboard() {
     favorites,
     toggleFavorite,
     loading,
+    onlyFavorites,
+    toggleSetOnlyFavorites,
   } = useStartWarsPlanets();
 
   const columns = useMemo(
@@ -144,6 +147,11 @@ export function StarWarsDashboard() {
               onChange={handleInputFilter("terrain")}
               value={filters.terrain}
             />
+            <Checkbox
+              label={strings.onlyFavorites}
+              checked={onlyFavorites}
+              onChange={toggleSetOnlyFavorites}
+            />
           </div>
         </div>
         <div className="star-wars-dashboard-sort">
@@ -163,6 +171,7 @@ export function StarWarsDashboard() {
           rows={planets}
           primaryKey="name"
           pageLimit={10}
+          hideNoData={!!loading}
           onRowClick={(row) => {
             dialogController.open({
               id: "PlanetDetailDialog",

@@ -43,6 +43,7 @@ export type TableProps<TableRowData> = {
   primaryKey: keyof TableRowData;
   onRowClick?: (row: TableRowData) => void;
   pageLimit?: number;
+  hideNoData?: boolean;
 };
 
 export type TableRowProps<TableRowData> = {

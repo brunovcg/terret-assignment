@@ -11,6 +11,7 @@ export const translation = {
     selectPlaceholder: "SELECT",
     diameter: "diameter",
     favorite: "Favorite",
+    onlyFavorites: "Only favorites",
   },
   planetDetailDialog: {
     title: "Planet Detail",

@@ -14,15 +14,25 @@ export function useStartWarsPlanets() {
     LocalStorageUtils.get("favorites") ?? [],
   );
 
+  const favoritesSet = useMemo(
+    () => new Set(favorites.map((n) => n.toLowerCase().trim())),
+    [favorites],
+  );
+
   // With more time we can also to direction: asc vs dsc
   const [sortBy, setSortBy] = useState<Sort | null>(null);
   const [filters, setFilters] = useState(INITIAL_FILTERS);
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
 
   const setFilter = (key: keyof typeof INITIAL_FILTERS, value: string) =>
     setFilters((state) => ({ ...state, [key]: value }));
 
   const clearFilter = () => setFilters(INITIAL_FILTERS);
   const clearSort = () => setSortBy(null);
+
+  const toggleSetOnlyFavorites = () => {
+    setOnlyFavorites((state) => !state);
+  };
 
   const toggleFavorite = useCallback(
     (key: string) => {
@@ -58,10 +68,24 @@ export function useStartWarsPlanets() {
         includesInsensitive(planet.terrain ?? "", filters.terrain),
     );
 
-    if (!sortBy) return filtered;
+    // Optional favorites filter
+    const filteredByFav = onlyFavorites
+      ? filtered.filter((planet) =>
+          favoritesSet.has((planet.name ?? "").toLowerCase().trim()),
+        )
+      : filtered;
 
-    return filtered.slice().sort((a, b) => comparePlanets(a, b, sortBy));
-  }, [planets, filters, sortBy]);
+    if (!sortBy) return filteredByFav;
+
+    return filteredByFav.slice().sort((a, b) => comparePlanets(a, b, sortBy));
+  }, [
+    planets,
+    onlyFavorites,
+    sortBy,
+    filters.climate,
+    filters.terrain,
+    favoritesSet,
+  ]);
 
   return {
     planets: planetsWithFilterAndSorting,
@@ -71,7 +95,9 @@ export function useStartWarsPlanets() {
     setFilter,
     clearFilter,
     filters,
+    onlyFavorites,
     favorites,
     toggleFavorite,
+    toggleSetOnlyFavorites,
   };
 }
