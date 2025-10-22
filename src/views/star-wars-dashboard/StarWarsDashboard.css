@@ -10,6 +10,9 @@
     padding: 20px;
     justify-content: space-between;
     flex-wrap: wrap;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
 
     .star-wars-dashboard-sort {
       display: flex;
@@ -26,6 +29,18 @@
         flex-wrap: wrap;
         gap: 30px;
       }
+    }
+  }
+
+  .star-wars-dashboard-table {
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
+
+    .favorite-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

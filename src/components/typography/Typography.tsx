@@ -1,6 +1,6 @@
 import { createElement, type JSX, type PropsWithChildren } from "react";
 import "./Typography.css";
-import { mergeClass } from "../../utils/class-name/className.utils";
+import { ClassNameUtils } from "../../utils/class-name/className.utils";
 import { colorsVariants, type ColorsVariant } from "../../styles/colorsVariant";
 
 export type TextSize = "small" | "regular" | "large" | "title";
@@ -24,7 +24,7 @@ export function Typography({
   bold,
   as = "p",
 }: Readonly<Props>) {
-  const classes = mergeClass("typography", {
+  const classes = ClassNameUtils.merge("typography", {
     [`typography-size-${size}`]: !!size,
     [`typography-align-${align}`]: !!align,
     ["typography-bold"]: !!bold,

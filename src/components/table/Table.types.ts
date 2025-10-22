@@ -33,6 +33,7 @@ type CustomTableColumn<TableRowData> =
 export type TableColumn<TableRowData> = CustomTableColumn<TableRowData> & {
   id: string | number;
   header: ReactNode;
+  tdClassName?: string;
 };
 
 export type TableColumns<TableRowData> = TableColumn<TableRowData>[];

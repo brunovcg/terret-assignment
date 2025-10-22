@@ -4,7 +4,7 @@ import type { TableProps } from "./Table.types";
 import { TableRow } from "./TableRow";
 import { Button } from "../button/Button";
 import { getLocale } from "../../locales/locales";
-import { mergeClass } from "../../utils/class-name/className.utils";
+import { ClassNameUtils } from "../../utils/class-name/className.utils";
 import { Typography } from "../typography/Typography";
 
 const strings = getLocale().tableComponent;
@@ -40,7 +40,11 @@ export function Table<TableRowData>({
   }, [rows]);
 
   return (
-    <div className={mergeClass("table-component", { clickable: !!onRowClick })}>
+    <div
+      className={ClassNameUtils.merge("table-component", {
+        clickable: !!onRowClick,
+      })}
+    >
       <table>
         <thead>
           <tr>
@@ -58,6 +62,7 @@ export function Table<TableRowData>({
                 <td
                   key={`${column.id}-${String(row[primaryKey])}`}
                   onClick={() => onRowClick?.(row)}
+                  className={column.tdClassName}
                 >
                   <TableRow column={column} row={row} rows={rows} />
                 </td>

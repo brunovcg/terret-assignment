@@ -34,7 +34,7 @@ export function Dialog({ dialogId, heading, children, width }: DialogProps) {
             {heading}
           </Typography>
           <Button onClick={handleCloseDialog}>
-            <Icon icon="close" className="dialog-close-icon" />
+            <Icon icon="close" className="dialog-close-icon" weight="bold" />
           </Button>
         </div>
         {children}

@@ -1,6 +1,6 @@
 export const colorsVariants = {
   primary: "var(--primary-color)",
-  "primary-light": "var(--primary-light-color)",
+  hover: "var(--hover-color)",
   secondary: "var(--secondary-color)",
   error: "var(--error-color)",
 } as const;

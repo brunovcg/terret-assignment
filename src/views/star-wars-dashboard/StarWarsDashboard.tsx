@@ -43,12 +43,14 @@ export function StarWarsDashboard() {
       {
         id: "favorite",
         header: strings.favorite,
+        tdClassName: "favorite-column",
         cell: ({ row }) => (
           <Button
             onClick={(e) => {
               e.stopPropagation();
               toggleFavorite(row.name);
             }}
+            className="favorite-button"
           >
             <Icon
               icon="star"
@@ -165,7 +167,7 @@ export function StarWarsDashboard() {
         </div>
       </div>
 
-      <ScrollableContainer>
+      <ScrollableContainer className="star-wars-dashboard-table">
         <Table
           columns={columns}
           rows={planets}

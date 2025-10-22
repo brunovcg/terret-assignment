@@ -9,7 +9,7 @@
       tbody {
         tr {
           &:hover td:not(.no-data-row) {
-            background: var(--primary-light-color);
+            background: var(--hover-color);
             cursor: pointer;
           }
         }

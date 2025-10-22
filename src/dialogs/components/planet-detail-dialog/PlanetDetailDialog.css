@@ -3,6 +3,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
     .planet-info-data {
       display: flex;
       gap: 20px;
@@ -14,10 +17,14 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
     .dialog-resident-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
+
       .resident-card {
         padding: 20px;
         border-radius: 4px;
@@ -27,32 +34,39 @@
         box-shadow: var(--box-shadow);
       }
     }
-    .dialog-charts {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
+  }
 
-    .averages {
+  .dialog-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  .averages {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 4px;
+    .average-card-list {
       display: flex;
-      flex-direction: column;
-      gap: 32px;
-      .average-card-list {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      .average-card {
         display: flex;
-        flex-wrap: wrap;
+        flex: 1;
+        flex-direction: column;
+        box-shadow: var(--box-shadow);
+        padding: 20px;
+        border-radius: 4px;
         justify-content: center;
-        gap: 40px;
-        .average-card {
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          box-shadow: var(--box-shadow);
-          padding: 20px;
-          border-radius: 4px;
-          justify-content: center;
-          align-items: center;
-          gap: 8px;
-        }
+        align-items: center;
+        gap: 8px;
       }
     }
   }

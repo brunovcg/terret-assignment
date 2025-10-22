@@ -3,7 +3,7 @@
   padding: 10px 20px;
   color: var(--primary-color);
   cursor: pointer;
-  background-color: var(--primary-background);
+  background-color: transparent;
   border-radius: 4px;
   font-weight: bold;
 

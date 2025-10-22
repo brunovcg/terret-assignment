@@ -1,7 +1,7 @@
 import { icons } from "./register";
 import { CreateComponent } from "../create-component/CreateComponent";
 import { type ColorsVariant } from "../../styles/colorsVariant";
-import { mergeClass } from "../../utils/class-name/className.utils";
+import { ClassNameUtils } from "../../utils/class-name/className.utils";
 
 export type IconName = keyof typeof icons;
 export type IconWeight = "duotone" | "regular" | "bold" | "thin" | "fill";
@@ -31,7 +31,7 @@ export function Icon({
   return (
     <span
       id={`icon-${icon}`}
-      className={mergeClass(
+      className={ClassNameUtils.merge(
         "icon-component",
         `color-variant-${variant}`,
         className,

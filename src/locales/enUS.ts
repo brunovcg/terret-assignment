@@ -28,7 +28,7 @@ export const translation = {
     orbitalPeriod: "Orbital period",
     population: "Population",
     rotationPeriod: "Rotation period",
-    noData: "No residents in this planet",
+    noData: "No known residents in this planet",
     averageMass: "Average mass",
     averageHeight: "Average height",
     averages: "Averages",
