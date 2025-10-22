@@ -1,13 +1,11 @@
 import { Typography } from "../../../../components/typography/Typography";
 import { getLocale } from "../../../../locales/locales";
-import type { useStarWarsPlanetDetails } from "../../../../services/star-wars/useStarWarsPlanetDetails";
+import type { ReducedResidentData } from "../../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails";
 
 const string = getLocale().planetDetailDialog;
 
 interface Props {
-  reducedResidents: ReturnType<
-    typeof useStarWarsPlanetDetails
-  >["reducedResidents"];
+  reducedResidents: ReducedResidentData;
 }
 
 export function PlanetDetailDialogAverages({ reducedResidents }: Props) {

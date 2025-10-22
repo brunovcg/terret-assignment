@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import type {
   StarWarsPerson,
   StarWarsPlanetWithResidents,
-} from "./starWars.api.types";
-import { StarWarsService } from "./starWars.api";
+} from "../starWars.api.types";
+import { StarWarsService } from "../starWars.api";
 
 const starWarsService = new StarWarsService();
 
-interface ReducedResidentData {
+export interface ReducedResidentData {
   gender: {
     datasets: { data: number[] }[];
     labels: string[];

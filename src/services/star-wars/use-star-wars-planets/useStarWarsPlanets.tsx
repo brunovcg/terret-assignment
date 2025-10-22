@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { StarWarsService } from "./starWars.api";
-import type { Sort, StarWarsPlanet } from "./starWars.api.types";
-import { comparePlanets, includesInsensitive } from "./startWars.utils";
-import { INITIAL_FILTERS } from "./starWars.constants";
-import { LocalStorageUtils } from "../../utils/local-storage/localStorage.utils";
+import { StarWarsService } from "../starWars.api";
+import type { Sort, StarWarsPlanet } from "../starWars.api.types";
+import { comparePlanets, includesInsensitive } from "../startWars.utils";
+import { INITIAL_FILTERS } from "../starWars.constants";
+import { LocalStorageUtils } from "../../../utils/local-storage/localStorage.utils";
 
 const starWarsService = new StarWarsService();
 

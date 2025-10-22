@@ -57,7 +57,11 @@ export function Table<TableRowData>({
         </thead>
         <tbody>
           {(pages[currentPageIndex] ?? []).map((row) => (
-            <tr key={String(row[primaryKey])}>
+            <tr
+              key={String(row[primaryKey])}
+              className="table-row"
+              data-testid={`table-row-${row[primaryKey]}`}
+            >
               {columns.map((column) => (
                 <td
                   key={`${column.id}-${String(row[primaryKey])}`}

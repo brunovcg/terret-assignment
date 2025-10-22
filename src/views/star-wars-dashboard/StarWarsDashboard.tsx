@@ -1,6 +1,6 @@
 import { useMemo, type ChangeEvent } from "react";
 import { Table } from "../../components/table/Table";
-import { useStartWarsPlanets } from "../../services/star-wars/useStarWarsPlanets";
+import { useStartWarsPlanets } from "../../services/star-wars/use-star-wars-planets/useStarWarsPlanets";
 import type {
   Sort,
   StarWarsPlanet,
@@ -8,7 +8,6 @@ import type {
 import type { TableColumns } from "../../components/table/Table.types";
 import { getLocale } from "../../locales/locales";
 import "./StarWarsDashboard.css";
-import { Typography } from "../../components/typography/Typography";
 import { dialogController } from "../../dialogs/controller";
 import { InputText } from "../../components/input-text/InputText";
 import {
@@ -22,6 +21,7 @@ import { Icon } from "../../components/icon/Icon";
 import { ScrollableContainer } from "../../components/scrollable-container/ScrollableContainer";
 import { Loading } from "../../components/loading/Loading";
 import { Checkbox } from "../../components/checkbox/Checkbox";
+import { Typography } from "../../components/typography/Typography";
 
 const strings = getLocale().planetTable;
 

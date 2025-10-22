@@ -1,5 +1,4 @@
 import { getLocale } from "../../../locales/locales";
-import { useStarWarsPlanetDetails } from "../../../services/star-wars/useStarWarsPlanetDetails";
 import { Dialog } from "../../Dialog";
 import "./PlanetDetailDialog.css";
 import { Loading } from "../../../components/loading/Loading";
@@ -8,6 +7,7 @@ import { PlanetDetailDialogResidents } from "./components/PlanetDetailDialogResi
 import { PlanetDetailDialogCharts } from "./components/PlanetDetailDialogCharts";
 import { PlanetDetailDialogAverages } from "./components/PlanetDetailDialogAverages";
 import { Typography } from "../../../components/typography/Typography";
+import { useStarWarsPlanetDetails } from "../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails";
 
 const string = getLocale().planetDetailDialog;
 
@@ -29,7 +29,7 @@ export function PlanetDetailDialog({ planetUrl }: Props) {
             <PlanetDetailDialogPlanetInfo
               planetWithResidents={planetWithResidents}
             />
-            {planetWithResidents?.residents.length ? (
+            {planetWithResidents?.residents.length && reducedResidents ? (
               <>
                 <PlanetDetailDialogResidents
                   planetWithResidents={planetWithResidents}
