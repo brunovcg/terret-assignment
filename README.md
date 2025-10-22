@@ -66,7 +66,8 @@ AI was used as a coding assistant, but final logic and types were reviewed and r
 4- Created a couple of reusable UI components and utilities in order to reuse code  
 5- Declared a global style with css variants to help keep standardization and a design system  
 6- Services holds the layer of the third party api and data manipulation needed to render as customHooks  
-7- Used React Charts to meet the requirements. I applied a lazy loading since this lib is big and this app is a Client Side SPA. This way we can separate better the bundles. In a big application that can make a difference
+7- Implemented a Typography component to better standartize font
+8- Used React Charts to meet the requirements. I applied a lazy loading since this lib is big and this app is a Client Side SPA. This way we can separate better the bundles. In a big application that can make a difference
 
 ## Faced challenges
 
@@ -82,6 +83,7 @@ About architecture
 4- If internationalization is needed, use i18next, other libs or even create a controller for it.
 5- Install husky and lint staged for pre-commit and pre-push git hooks, test code locally before sending to repository and maybe avoid running pipelines that could fail, but we could catch issues locally.
 6- Since we are working with a SPA, install a bundle analyzer to have in mind bundle sizes and performance.
+7 - Configure path aliases in tsconfig.json to simplify imports and avoid using long relative paths (e.g. ../../../).
 
 About APP functionality  
 1- Sort asc and dsc  
