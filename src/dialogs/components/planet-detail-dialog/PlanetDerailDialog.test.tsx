@@ -7,7 +7,7 @@ import { PlanetDetailDialogResidents } from "./components/PlanetDetailDialogResi
 import { PlanetDetailData } from "./components/PlanetDetailData";
 import { getLocale } from "../../../locales/locales";
 import type { StarWarsPlanetWithResidents } from "../../../services/star-wars/starWars.api.types";
-import type { ReducedResidentData } from "../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails";
+import type { ReducedResidentData } from "../../../services/star-wars/use-star-wars-planet-details/useStarWarsPlanetDetails.utils";
 
 vi.mock("../../../components/charts/pie-chart/LazyPieChart", () => ({
   LazyPieChart: ({
