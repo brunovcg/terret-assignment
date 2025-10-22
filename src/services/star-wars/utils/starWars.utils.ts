@@ -4,9 +4,8 @@ import type {
   StarWarsPlanetWithResidents,
   StarWarsPerson,
 } from "../api/starWars.api.types";
-import type { INITIAL_FILTERS } from "../starWars.constants";
 
-function includesInsensitive(hay: string, needle: string) {
+export function includesInsensitive(hay: string, needle: string) {
   if (!needle) return true;
   return hay.toLowerCase().includes(needle.toLowerCase());
 }
@@ -18,7 +17,11 @@ function safeNumber(value: string) {
 }
 
 // Asked AI to create
-function comparePlanets(a: StarWarsPlanet, b: StarWarsPlanet, sort: Sort) {
+export function comparePlanets(
+  a: StarWarsPlanet,
+  b: StarWarsPlanet,
+  sort: Sort,
+) {
   if (sort === "name") {
     return a.name.localeCompare(b.name, undefined);
   }
@@ -149,73 +152,4 @@ export function reduceResidentsData(
     averageHeight,
     averageMass,
   };
-}
-
-type FilterAndSortPlanetsArgs = {
-  planets: StarWarsPlanet[];
-  filters: typeof INITIAL_FILTERS;
-  onlyFavorites: boolean;
-  favoritesSet: Set<string>;
-  sortBy: Sort | null;
-};
-
-// DOC Ai generated
-/**
- * Filters and sorts a list of Star Wars planets based on provided criteria.
- *
- * ### Filtering
- * - Filters planets whose `climate` and `terrain` match (case-insensitive) the given filters.
- * - If `onlyFavorites` is `true`, it keeps only planets whose names exist in `favoritesSet`.
- *
- * ### Sorting
- * - If `sortBy` is `null`, returns the filtered planets in their current order.
- * - If `sortBy` is `"name"`, sorts planets alphabetically by name.
- * - For numeric fields (e.g. `population`, `diameter`, etc.), sorts ascending by numeric value.
- *   Non-numeric or missing values are placed at the end.
- *
- * @param {Object} args - Parameters for filtering and sorting.
- * @param {StarWarsPlanet[]} args.planets - The list of planets to process.
- * @param {typeof INITIAL_FILTERS} args.filters - Filter options (climate and terrain).
- * @param {boolean} args.onlyFavorites - Whether to restrict results to favorite planets.
- * @param {Set<string>} args.favoritesSet - Set of lowercase planet names marked as favorites.
- * @param {Sort | null} args.sortBy - Sorting key, or `null` for no sorting.
- *
- * @returns {StarWarsPlanet[]} A new array of planets that match the filters and sort order.
- *
- * @example
- * ```ts
- * const favorites = new Set(["tatooine"]);
- * const result = filterAndSortPlanets({
- *   planets: allPlanets,
- *   filters: { climate: "arid", terrain: "" },
- *   onlyFavorites: true,
- *   favoritesSet: favorites,
- *   sortBy: "name",
- * });
- * → returns favorite planets with 'arid' climate, sorted alphabetically
- * ```
- */
-export function filterAndSortPlanets({
-  planets,
-  filters,
-  onlyFavorites,
-  favoritesSet,
-  sortBy,
-}: FilterAndSortPlanetsArgs) {
-  const filtered = planets.filter(
-    (planet) =>
-      includesInsensitive(planet.climate ?? "", filters.climate) &&
-      includesInsensitive(planet.terrain ?? "", filters.terrain),
-  );
-
-  // Optional favorites filter
-  const filteredByFav = onlyFavorites
-    ? filtered.filter((planet) =>
-        favoritesSet.has((planet.name ?? "").toLowerCase().trim()),
-      )
-    : filtered;
-
-  if (!sortBy) return filteredByFav;
-
-  return filteredByFav.slice().sort((a, b) => comparePlanets(a, b, sortBy));
 }
