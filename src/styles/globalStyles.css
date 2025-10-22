@@ -58,16 +58,16 @@ body {
 }
 
 .color-variant {
-  &-primary {
+  :is(-primary) {
     color: var(--primary-color);
   }
-  &-primary-light {
+  :is(-primary-light) {
     color: var(--primary-light-color);
   }
-  &-secondary {
+  :is(-secondary) {
     color: var(--secondary-color);
   }
-  &-error {
+  :is(-error) {
     color: var(--error-error);
   }
 }
