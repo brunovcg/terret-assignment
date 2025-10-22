@@ -11,14 +11,8 @@ export interface RequestConfig<TBody = unknown, TResponse = unknown> {
 }
 
 export class Client {
-  private baseURL: string;
-
-  constructor(baseURL?: string) {
-    this.baseURL = baseURL ? baseURL.replace(/\/+$/, "") : "";
-  }
-
   private buildURL(endpoint: string) {
-    return `${this.baseURL}/${endpoint.replace(/^\/+/, "")}`;
+    return endpoint.replace(/^\/+/, "");
   }
 
   private async request<TResponse = unknown, TBody = unknown>(

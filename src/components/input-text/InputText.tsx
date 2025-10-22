@@ -6,6 +6,7 @@ import {
   type ChangeEvent,
 } from "react";
 import "./InputText.css";
+import { Typography } from "../typography/Typography";
 
 type Props = PropsWithChildren<
   Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> & {
@@ -15,7 +16,6 @@ type Props = PropsWithChildren<
 >;
 
 export function InputText({
-  children,
   label,
   debounce = 0,
   onChange,
@@ -54,7 +54,9 @@ export function InputText({
 
   return (
     <label htmlFor={id} className="input-text-label">
-      {label}
+      <Typography as="span" size="small" bold>
+        {label}
+      </Typography>
       <input
         id={id}
         {...rest}
@@ -63,7 +65,6 @@ export function InputText({
         className="input-text"
         type="text"
       />
-      {children}
     </label>
   );
 }

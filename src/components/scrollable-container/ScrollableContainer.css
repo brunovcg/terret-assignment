@@ -1,0 +1,4 @@
+.scrollable-container-component {
+  max-width: 100%;
+  overflow-y: auto;
+}

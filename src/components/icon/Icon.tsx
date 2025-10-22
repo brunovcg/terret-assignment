@@ -1,6 +1,7 @@
 import { icons } from "./register";
 import { CreateComponent } from "../create-component/CreateComponent";
-import { colorsVariants, type ColorsVariant } from "../../styles/colorsVariant";
+import { type ColorsVariant } from "../../styles/colorsVariant";
+import { mergeClass } from "../../utils/class-name/className.utils";
 
 export type IconName = keyof typeof icons;
 export type IconWeight = "duotone" | "regular" | "bold" | "thin" | "fill";
@@ -11,6 +12,7 @@ export type IconProps = {
   notifications?: number;
   weight?: IconWeight;
   mirrored?: boolean;
+  className?: string;
 };
 
 export function Icon({
@@ -18,6 +20,7 @@ export function Icon({
   variant = "primary",
   mirrored,
   weight = "regular",
+  className,
 }: IconProps) {
   const props = {
     weight,
@@ -28,8 +31,11 @@ export function Icon({
   return (
     <span
       id={`icon-${icon}`}
-      style={{ color: colorsVariants[variant] }}
-      className="icon-component"
+      className={mergeClass(
+        "icon-component",
+        `color-variant-${variant}`,
+        className,
+      )}
     >
       <CreateComponent component={icons[`${icon}`]} props={props} />
     </span>

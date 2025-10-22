@@ -45,4 +45,4 @@ class DialogController {
   }
 }
 
-export const dialog = new DialogController();
+export const dialogController = new DialogController();

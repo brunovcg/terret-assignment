@@ -1,13 +1,33 @@
 .dialog-component {
-  min-width: 400px;
-
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-opacity-background);
+  position: absolute;
+  top: 0;
 
-  .dialog-header {
+  .dialog-container {
+    flex-direction: column;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 90vw;
+    background-color: var(--primary-background);
+    padding: 20px;
+    gap: 20px;
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .button-component {
+        &:hover {
+          .dialog-close-icon {
+            background-color: var(--primary-color);
+            color: var(--primary-background);
+          }
+        }
+      }
+    }
   }
 }

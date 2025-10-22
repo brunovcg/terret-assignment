@@ -44,7 +44,4 @@ export interface StarWarsPerson {
   vehicles: string[];
 }
 
-export type Sort = {
-  column: (typeof SORTABLE_COLUMNS)[number];
-  direction: "asc" | "dsc";
-};
+export type Sort = (typeof SORTABLE_COLUMNS)[number];

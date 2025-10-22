@@ -5,7 +5,7 @@ type Props = PropsWithChildren<React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 export function Button({ children, ...rest }: Props) {
   return (
-    <button {...rest} className="button">
+    <button {...rest} className="button-component">
       {children}
     </button>
   );

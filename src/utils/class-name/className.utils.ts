@@ -1,4 +1,4 @@
-export type ClassValue = string | Record<string, boolean>;
+export type ClassValue = string | undefined | Record<string, boolean>;
 
 export function mergeClass(...args: ClassValue[]): string {
   const classes: string[] = [];

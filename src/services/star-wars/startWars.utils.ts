@@ -15,15 +15,12 @@ export function comparePlanets(
   b: StarWarsPlanet,
   sort: Sort,
 ) {
-  const { column, direction } = sort;
-
-  if (column === "name") {
-    const res = a.name.localeCompare(b.name, undefined);
-    return direction === "asc" ? res : -res;
+  if (sort === "name") {
+    return a.name.localeCompare(b.name, undefined);
   }
 
-  const av = safeNumber(a[column as keyof StarWarsPlanet] as string);
-  const bv = safeNumber(b[column as keyof StarWarsPlanet] as string);
+  const av = safeNumber(a[sort as keyof StarWarsPlanet] as string);
+  const bv = safeNumber(b[sort as keyof StarWarsPlanet] as string);
 
   const aIsNaN = Number.isNaN(av);
   const bIsNaN = Number.isNaN(bv);
@@ -34,5 +31,5 @@ export function comparePlanets(
 
   const diff = av - bv;
   if (diff === 0) return 0;
-  return direction === "asc" ? diff : -diff;
+  return diff;
 }

@@ -3,14 +3,18 @@ import { StarWarsService } from "./starWars.api";
 import type { Sort, StarWarsPlanet } from "./starWars.api.types";
 import { comparePlanets, includesInsensitive } from "./startWars.utils";
 import { INITIAL_FILTERS } from "./starWars.constants";
+import { LocalStorageUtils } from "../../utils/local-storage/localStorage.utils";
 
 const starWarsService = new StarWarsService();
 
 export function useStartWarsPlanets() {
   const [planets, setAllPlanets] = useState<StarWarsPlanet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>(null);
+  const [favorites, setFavorites] = useState<string[]>(
+    LocalStorageUtils.get("favorites") ?? [],
+  );
 
+  // With more time we can also to direction: asc vs dsc
   const [sortBy, setSortBy] = useState<Sort | null>(null);
   const [filters, setFilters] = useState(INITIAL_FILTERS);
 
@@ -20,21 +24,29 @@ export function useStartWarsPlanets() {
   const clearFilter = () => setFilters(INITIAL_FILTERS);
   const clearSort = () => setSortBy(null);
 
+  const toggleFavorite = (key: string) => {
+    if (favorites.includes(key)) {
+      setFavorites((state) => state.filter((item) => item !== key));
+    } else {
+      setFavorites((state) => [...state, key]);
+    }
+  };
+
   useEffect(() => {
-    let isMounted = true;
-    (async () => {
-      try {
-        const all = await starWarsService.getAllPlanetPagesResults();
-        if (isMounted) setAllPlanets(all);
-      } catch (e) {
-        if (isMounted) setError(e);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    })();
-    return () => {
-      isMounted = false;
-    };
+    // Keep local storage updated
+    LocalStorageUtils.set("favorites", favorites);
+  }, [favorites]);
+
+  useEffect(() => {
+    setLoading(true);
+    starWarsService
+      .getAllPlanetPagesResults()
+      .then((result) => {
+        setAllPlanets(result);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const planetsWithFilterAndSorting = useMemo(() => {
@@ -52,10 +64,12 @@ export function useStartWarsPlanets() {
   return {
     planets: planetsWithFilterAndSorting,
     loading,
-    error,
     setSortBy,
     clearSort,
     setFilter,
     clearFilter,
-  } as const;
+    filters,
+    favorites,
+    toggleFavorite,
+  };
 }

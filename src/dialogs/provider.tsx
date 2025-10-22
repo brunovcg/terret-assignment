@@ -1,5 +1,5 @@
 import { type ComponentType, Fragment, useSyncExternalStore } from "react";
-import { dialog } from "./controller";
+import { dialogController } from "./controller";
 import { dialogs } from "./register";
 import { Portal } from "../components/portal/Portal";
 import {
@@ -9,8 +9,8 @@ import {
 
 export function DialogProvider() {
   const openedDialogs = useSyncExternalStore(
-    dialog.subscribe,
-    dialog.getSnapshot,
+    dialogController.subscribe,
+    dialogController.getSnapshot,
   );
 
   return (

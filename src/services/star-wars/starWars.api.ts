@@ -19,6 +19,10 @@ export class StarWarsService {
     return client.get<StarWarsPerson>(personUrl);
   }
 
+  /* 
+      Endpoint does not have sorting params (according to DOCs: https://swapi.dev/documentation#intro),
+      this way I had to fetch everything to be able to sort no only the page, but all results
+  */
   public async getAllPlanetPagesResults() {
     const starWarsApiLimit = 10;
 
@@ -30,6 +34,9 @@ export class StarWarsService {
       promises.push(this.getPlanets(i));
     }
 
+    /* 
+      Used Promise.all so we can fetch all other pages at once
+  */
     const restPages = await Promise.all(promises);
 
     const restResults = restPages.flatMap((page) => page.results);
@@ -40,6 +47,9 @@ export class StarWarsService {
   public async getAllPeopleInPlanet(peopleUrls: WithHttp[]) {
     const promises = peopleUrls.map((personUrl) => this.getPerson(personUrl));
 
+    /* 
+      Used Promise.all so we can fetch all people in planet as once
+  */
     return await Promise.all(promises);
   }
 }

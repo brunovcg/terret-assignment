@@ -1,2 +1,5 @@
-// Registry of dialog components by id
-export const dialogs = {};
+import { PlanetDetailDialog } from "./components/planet-detail-dialog/PlanetDetailDialog";
+
+export const dialogs = {
+  PlanetDetailDialog,
+};

@@ -3,7 +3,7 @@ import "./Typography.css";
 import { mergeClass } from "../../utils/class-name/className.utils";
 import { colorsVariants, type ColorsVariant } from "../../styles/colorsVariant";
 
-export type TextSize = "small" | "regular" | "large";
+export type TextSize = "small" | "regular" | "large" | "title";
 export type TextAlign = "left" | "right" | "center" | "justify";
 
 type Props = PropsWithChildren<{
@@ -24,7 +24,7 @@ export function Typography({
   bold,
   as = "p",
 }: Readonly<Props>) {
-  const classes = mergeClass("typography-component", {
+  const classes = mergeClass("typography", {
     [`typography-size-${size}`]: !!size,
     [`typography-align-${align}`]: !!align,
     ["typography-bold"]: !!bold,

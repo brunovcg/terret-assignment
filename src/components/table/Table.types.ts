@@ -30,10 +30,9 @@ type CustomTableColumn<TableRowData> =
       }) => ReactNode;
     };
 
-type TableColumn<TableRowData> = CustomTableColumn<TableRowData> & {
+export type TableColumn<TableRowData> = CustomTableColumn<TableRowData> & {
   id: string | number;
   header: ReactNode;
-  hideColumn?: boolean;
 };
 
 export type TableColumns<TableRowData> = TableColumn<TableRowData>[];
@@ -43,6 +42,7 @@ export type TableProps<TableRowData> = {
   rows: TableRowData[];
   primaryKey: keyof TableRowData;
   onRowClick?: (row: TableRowData) => void;
+  pageLimit?: number;
 };
 
 export type TableRowProps<TableRowData> = {

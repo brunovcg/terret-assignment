@@ -1,5 +1,18 @@
-.button {
+.button-component {
   border: 1px solid var(--primary-color);
   padding: 10px 20px;
   color: var(--primary-color);
+  cursor: pointer;
+  background-color: var(--primary-background);
+  border-radius: 4px;
+  font-weight: bold;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--primary-background);
+  }
 }
