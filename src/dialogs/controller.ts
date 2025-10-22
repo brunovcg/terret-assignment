@@ -5,6 +5,7 @@ import type {
   DialogListener,
   DialogId,
 } from "./types";
+import { URLParamsUtils } from "../utils/url/urlParams.utils";
 
 class DialogController {
   private readonly listeners = new Set<DialogListener<DialogId, unknown>>();
@@ -37,11 +38,14 @@ class DialogController {
       { id, props, ref } as DialogItem<DialogId, ComponentRef>,
     ];
     this.notify();
+
+    URLParamsUtils.set("dialog", JSON.stringify({ id, props }));
   }
 
   close(id: DialogId): void {
     this.openedDialogs = this.openedDialogs.filter((item) => item.id !== id);
     this.notify();
+    URLParamsUtils.clear("dialog");
   }
 }
 

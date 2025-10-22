@@ -4,6 +4,7 @@ import type {
   StarWarsPageable,
   StarWarsPlanet,
   StarWarsPerson,
+  StarWarsPlanetWithResidents,
 } from "./starWars.api.types";
 
 const client = new Client();
@@ -17,6 +18,15 @@ export class StarWarsService {
 
   private async getPerson(personUrl: WithHttp) {
     return client.get<StarWarsPerson>(personUrl);
+  }
+
+  private async getAllPeopleInPlanet(peopleUrls: WithHttp[]) {
+    const promises = peopleUrls.map((personUrl) => this.getPerson(personUrl));
+
+    /* 
+      Used Promise.all so we can fetch all people in planet as once
+  */
+    return await Promise.all(promises);
   }
 
   /* 
@@ -44,12 +54,13 @@ export class StarWarsService {
     return [...firstPage.results, ...restResults];
   }
 
-  public async getAllPeopleInPlanet(peopleUrls: WithHttp[]) {
-    const promises = peopleUrls.map((personUrl) => this.getPerson(personUrl));
+  public async getPlanetDetails(
+    planetUrl: string,
+  ): Promise<StarWarsPlanetWithResidents> {
+    const planet = await client.get<StarWarsPlanet>(planetUrl);
 
-    /* 
-      Used Promise.all so we can fetch all people in planet as once
-  */
-    return await Promise.all(promises);
+    const residents = await this.getAllPeopleInPlanet(planet.residents);
+
+    return { ...planet, residents };
   }
 }

@@ -1,20 +1,20 @@
+type ParamsKey = "dialog";
+
 export class URLParamsUtils {
-  static set(key: string, value: string): string {
+  static set(key: ParamsKey, value: string) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
     window.history.replaceState({}, "", url.toString());
-    return url.toString();
   }
 
-  static get(key: string): string | null {
+  static get(key: ParamsKey): string | null {
     const url = new URL(window.location.href);
     return url.searchParams.get(key);
   }
 
-  static clear(): string {
+  static clear(key: ParamsKey) {
     const url = new URL(window.location.href);
-    url.search = "";
+    url.searchParams.delete(key);
     window.history.replaceState({}, "", url.toString());
-    return url.toString();
   }
 }

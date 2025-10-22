@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Table.css";
 import type { TableProps } from "./Table.types";
 import { TableRow } from "./TableRow";
@@ -26,13 +26,17 @@ export function Table<TableRowData>({
         return acc;
       }, [] as TableRowData[][]);
 
-  const [currentPageIndex, setCurrentPageNumber] = useState(0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   const isFirstPage = currentPageIndex === 0;
-  const isLastPage = pages.length - 1 === currentPageIndex;
+  const isLastPage = pages.length - 1 <= currentPageIndex;
   const handlePageChange = (direction: "next" | "previous") => {
-    setCurrentPageNumber((state) => state + (direction === "next" ? +1 : -1));
+    setCurrentPageIndex((state) => state + (direction === "next" ? +1 : -1));
   };
+
+  useEffect(() => {
+    setCurrentPageIndex(0);
+  }, [rows]);
 
   return (
     <div className={mergeClass("table-component", { clickable: !!onRowClick })}>
@@ -61,8 +65,8 @@ export function Table<TableRowData>({
           ))}
           {!rows.length ? (
             <tr>
-              <td colSpan={columns.length}>
-                <Typography bold align="center">
+              <td colSpan={columns.length} className="no-data-row">
+                <Typography bold align="center" variant="error">
                   {strings.noData}
                 </Typography>
               </td>
@@ -70,10 +74,12 @@ export function Table<TableRowData>({
           ) : null}
         </tbody>
       </table>
-      {pageLimit ? (
+      {pageLimit && !!rows.length ? (
         <div className="table-pagination">
           <div className="table-pagination-info">
-            <Typography as="span">{strings.page}</Typography>
+            <Typography as="span" variant="secondary">
+              {strings.page}
+            </Typography>
             <Typography as="span">{currentPageIndex + 1}</Typography>
             <Typography as="span" variant="secondary">
               {strings.of}

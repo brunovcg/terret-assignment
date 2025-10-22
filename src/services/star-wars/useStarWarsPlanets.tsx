@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { StarWarsService } from "./starWars.api";
 import type { Sort, StarWarsPlanet } from "./starWars.api.types";
 import { comparePlanets, includesInsensitive } from "./startWars.utils";
@@ -24,13 +24,16 @@ export function useStartWarsPlanets() {
   const clearFilter = () => setFilters(INITIAL_FILTERS);
   const clearSort = () => setSortBy(null);
 
-  const toggleFavorite = (key: string) => {
-    if (favorites.includes(key)) {
-      setFavorites((state) => state.filter((item) => item !== key));
-    } else {
-      setFavorites((state) => [...state, key]);
-    }
-  };
+  const toggleFavorite = useCallback(
+    (key: string) => {
+      if (favorites.includes(key)) {
+        setFavorites((state) => state.filter((item) => item !== key));
+      } else {
+        setFavorites((state) => [...state, key]);
+      }
+    },
+    [favorites],
+  );
 
   useEffect(() => {
     // Keep local storage updated
@@ -38,7 +41,6 @@ export function useStartWarsPlanets() {
   }, [favorites]);
 
   useEffect(() => {
-    setLoading(true);
     starWarsService
       .getAllPlanetPagesResults()
       .then((result) => {

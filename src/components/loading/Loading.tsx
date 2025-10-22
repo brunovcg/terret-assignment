@@ -1,3 +1,15 @@
+import { getLocale } from "../../locales/locales";
+import { Typography } from "../typography/Typography";
+import "./Loading.css";
+
+const strings = getLocale().loadingComponent;
+
 export function Loading() {
-  return <div>Loading</div>;
+  return (
+    <div className="loading-component">
+      <Typography bold align="center">
+        {strings.loading}
+      </Typography>
+    </div>
+  );
 }

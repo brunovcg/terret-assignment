@@ -45,3 +45,7 @@ export interface StarWarsPerson {
 }
 
 export type Sort = (typeof SORTABLE_COLUMNS)[number];
+
+export type StarWarsPlanetWithResidents = Omit<StarWarsPlanet, "residents"> & {
+  residents: StarWarsPerson[];
+};

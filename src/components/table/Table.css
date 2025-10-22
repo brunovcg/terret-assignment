@@ -8,7 +8,7 @@
     table {
       tbody {
         tr {
-          &:hover td {
+          &:hover td:not(.no-data-row) {
             background: var(--primary-light-color);
             cursor: pointer;
           }

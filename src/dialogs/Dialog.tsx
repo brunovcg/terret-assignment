@@ -30,7 +30,7 @@ export function Dialog({ dialogId, heading, children, width }: DialogProps) {
     <dialog id={`dialog-${dialogId}`} className="dialog-component" open>
       <div className="dialog-container" style={{ width: `${width ?? 400}px` }}>
         <div className="dialog-header">
-          <Typography as="h2" size="large">
+          <Typography as="h2" size="title">
             {heading}
           </Typography>
           <Button onClick={handleCloseDialog}>

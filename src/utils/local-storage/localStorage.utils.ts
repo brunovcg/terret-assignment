@@ -1,10 +1,12 @@
+type LocalStorageKey = "favorites";
+
 export class LocalStorageUtils {
-  static set(key: string, value: unknown): void {
+  static set(key: LocalStorageKey, value: unknown): void {
     const serialized = JSON.stringify(value);
     localStorage.setItem(key, serialized);
   }
 
-  static get<T>(key: string): T | null {
+  static get<T>(key: LocalStorageKey): T | null {
     try {
       const item = localStorage.getItem(key);
       if (!item) return null;
@@ -14,7 +16,7 @@ export class LocalStorageUtils {
     }
   }
 
-  static clear(key?: string): void {
+  static clear(key?: LocalStorageKey): void {
     if (key) {
       localStorage.removeItem(key);
     } else {

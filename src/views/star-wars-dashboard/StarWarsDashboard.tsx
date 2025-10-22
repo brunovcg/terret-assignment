@@ -20,12 +20,20 @@ import { Select } from "../../components/select/Select";
 import { Button } from "../../components/button/Button";
 import { Icon } from "../../components/icon/Icon";
 import { ScrollableContainer } from "../../components/scrollable-container/ScrollableContainer";
+import { Loading } from "../../components/loading/Loading";
 
 const strings = getLocale().planetTable;
 
 export function StarWarsDashboard() {
-  const { planets, setFilter, filters, setSortBy, favorites, toggleFavorite } =
-    useStartWarsPlanets();
+  const {
+    planets,
+    setFilter,
+    filters,
+    setSortBy,
+    favorites,
+    toggleFavorite,
+    loading,
+  } = useStartWarsPlanets();
 
   const columns = useMemo(
     (): TableColumns<StarWarsPlanet> => [
@@ -95,7 +103,7 @@ export function StarWarsDashboard() {
         ),
       },
     ],
-    [favorites],
+    [favorites, toggleFavorite],
   );
 
   const handleInputFilter =
@@ -155,9 +163,16 @@ export function StarWarsDashboard() {
           rows={planets}
           primaryKey="name"
           pageLimit={10}
-          onRowClick={() => dialogController.open({ id: "PlanetDetailDialog" })}
+          onRowClick={(row) => {
+            dialogController.open({
+              id: "PlanetDetailDialog",
+              props: { planetUrl: row.url },
+            });
+          }}
         />
       </ScrollableContainer>
+
+      {loading ? <Loading /> : null}
     </div>
   );
 }

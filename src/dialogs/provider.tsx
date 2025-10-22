@@ -1,4 +1,9 @@
-import { type ComponentType, Fragment, useSyncExternalStore } from "react";
+import {
+  type ComponentType,
+  Fragment,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
 import { dialogController } from "./controller";
 import { dialogs } from "./register";
 import { Portal } from "../components/portal/Portal";
@@ -6,12 +11,27 @@ import {
   CreateComponent,
   type AttributesOptionalChildren,
 } from "../components/create-component/CreateComponent";
+import { URLParamsUtils } from "../utils/url/urlParams.utils";
 
 export function DialogProvider() {
   const openedDialogs = useSyncExternalStore(
     dialogController.subscribe,
     dialogController.getSnapshot,
   );
+
+  // Open dialog detailed on query params
+  useEffect(() => {
+    try {
+      const params = URLParamsUtils.get("dialog");
+
+      if (params) {
+        const parsed = JSON.parse(params);
+        dialogController.open(parsed);
+      }
+    } catch {
+      return;
+    }
+  }, []);
 
   return (
     <Portal targetId="dialog-root">
