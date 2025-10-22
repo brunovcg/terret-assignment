@@ -142,12 +142,14 @@ export function StarWarsDashboard() {
               debounce={300}
               onChange={handleInputFilter("climate")}
               value={filters.climate}
+              data-testid="climate-input"
             />
             <InputText
               label={strings.terrain}
               debounce={300}
               onChange={handleInputFilter("terrain")}
               value={filters.terrain}
+              data-testid="terrain-input"
             />
             <Checkbox
               label={strings.onlyFavorites}

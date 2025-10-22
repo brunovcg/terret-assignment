@@ -64,6 +64,23 @@ export function useStartWarsPlanets() {
       });
   }, []);
 
+  /**
+   * Derives the visible planets list from the raw dataset.
+   *
+   * Behavior
+   * - **Filtering**: Keeps planets whose `climate` and `terrain` include the provided filter values
+   *   (case-insensitive) using `includesInsensitive`.
+   * - **Favorites**: When `onlyFavorites` is `true`, further narrows the list to planets whose
+   *   normalized name exists in `favoritesSet` (lowercased, trimmed).
+   * - **Sorting**: If `sortBy` is `null`, returns the filtered array as-is; otherwise returns a
+   *   shallow-copied array sorted by `comparePlanets(a, b, sortBy)`.
+   *
+   * Memoization
+   * - Recomputes only when one of these change: `planets`, `filters`, `onlyFavorites`,
+   *   `favoritesSet`, or `sortBy`.
+   *
+   * @returns {StarWarsPlanet[]} The filtered (and optionally sorted) list of planets.
+   */
   const planetsWithFilterAndSorting = useMemo(() => {
     const filtered = planets.filter(
       (planet) =>
