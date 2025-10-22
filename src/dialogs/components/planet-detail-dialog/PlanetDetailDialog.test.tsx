@@ -7,7 +7,7 @@ import { PlanetDetailDialogResidents } from "./components/PlanetDetailDialogResi
 import { PlanetDetailData } from "./components/PlanetDetailData";
 import { getLocale } from "../../../locales/locales";
 import type { StarWarsPlanetWithResidents } from "../../../services/star-wars/api/starWars.api.types";
-import type { ReducedResidentData } from "../../../services/star-wars/hooks/use-star-wars-planet-details/useStarWarsPlanetDetails.utils";
+import type { ReducedResidentData } from "../../../services/star-wars/utils/starWars.utils";
 
 vi.mock("../../../components/charts/pie-chart/LazyPieChart", () => ({
   LazyPieChart: ({
@@ -64,7 +64,6 @@ const mockReducedResidents = {
   ],
 } as const;
 
-// --- Tests ---
 describe("Planet detail dialog pieces", () => {
   it("renders averages with values", () => {
     render(
